@@ -1,5 +1,4 @@
 package com.zipcodewilmington.singlylinkedlist;
-import jdk.nashorn.internal.ir.Node;
 import java.util.LinkedList;
 /**
  * Created by leon on 1/10/18.
@@ -20,19 +19,26 @@ public class SinglyLinkedList<T> {
         head = null;
         tail = null;
     }
+    public Node<T> getHead(){
+        return head;
+    }
+    public Node<T> getNext(){
+        return tail;
+    }
     /**
      * add: If head/first node doesn't exist, head equals i
-     * else if a head exists, the tail.next to next node will point to i
-     * tail will also equal i
+     * else if a head exists, newNode goes to end of sequence.
+     * tail.next points to the new node
+     * tail becomes the newNode, which is the last Node
      */
-    public void add(int i){
+    public void add(T input){
+        Node<T> newNode = new Node<T>(input);
         if (head == null){
-            head = i;
-            tail = i;
+            head = newNode;
         } else {
-            tail.next = i;
-            tail = i;
+            tail.next = newNode;
         }
+        tail = newNode;
     }
     /**
      *

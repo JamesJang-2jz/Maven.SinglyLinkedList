@@ -1,6 +1,5 @@
 package com.zipcodewilmington.singlylinkedlist;
 
-import jdk.nashorn.internal.ir.Node;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,19 +11,18 @@ import java.util.LinkedList;
 public class SinglyLinkedListTest{
     @Test
     public void testAdd(){
-        // Create some nodes
-//        SinglyLinkedList sing = new SinglyLinkedList();
+        // Given
+        SinglyLinkedList<Integer> sing = new SinglyLinkedList<>();
+        Integer expected = 24;
+        // When
+        sing.add(expected);
+        // Then
+        Assert.assertEquals(expected, sing.getHead().data);
+        Assert.assertEquals(expected, sing.getNext().data);
+    }
+    @Test
+    public void testRemove(){
 
-        // Add the nodes to the list
-//        sing.add();
-        // Check that the head is correct
-//        Assert.assertEquals(expected, sing.head);
-
-        // Check that the tail is correct
-
-        // Check that the nodes are linked correctly
-//        assertEquals(node2, node1.next);
-//        assertNull(node3.next);
     }
 
 }
