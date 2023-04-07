@@ -23,6 +23,7 @@ public class SinglyLinkedListTest{
         String expected = "test";
         // When
         list.add(expected);
+        list.add("another one");
         // Then
         Assert.assertEquals(expected, list.getHead().data);
         Assert.assertTrue(list.contains(expected));
@@ -83,17 +84,48 @@ public class SinglyLinkedListTest{
         list.add("dummy");
         int actual = list.size();
         // Then
-        Assert.assertTrue(expected,actual );
+        Assert.assertEquals(expected,actual);
     }
     @Test
     public void testGet() {
+        // Given
+        String expected = "test";
+        // When
+        list.add("another one");
+        list.add(expected);
+        String actual = list.get(1).getData();
+        // Then
+        Assert.assertEquals(expected, actual);
     }
+
 
     @Test
     public void testCopy() {
+        // Given
+        list.add("dummy1");
+        list.add("zipcode");
+        list.add("dbz");
+        SinglyLinkedList<String> testList = list.copy();
+        // When
+        // Then
+        Assert.assertNotEquals(list.toString(), testList.toString());
+        for (int i = 0; i < list.size(); i++) {
+            Assert.assertEquals(list.get(i).getData(), testList.get(i).getData());
+        }
     }
-
     @Test
     public void testSort() {
+        // Given
+        list.add("dummyString");
+        list.add("zipcode");
+        list.add("dbz");
+        // When
+        list.sort();
+
+        // Then
+        Assert.assertEquals(list.get(0).getData(), "dummyString");
+        Assert.assertEquals(list.get(1).getData(), "zipcode");
+        Assert.assertEquals(list.get(2).getData(), "dbz");
     }
+
 }
