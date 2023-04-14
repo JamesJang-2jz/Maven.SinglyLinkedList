@@ -84,15 +84,20 @@ public class SinglyLinkedList<T> {
             current.setNext(new Node<T>(input));
         }
     }
-    public void remove(T j) {
-        Node temp;
-        Node n = head;
-        if (n != null && head == j) {
-            head = n.next;
+    public void remove(T input) {
+        if (head.getData().equals(input)){
+            head = head.next;
+            return;
         }
-        while (n != null && n.data != j) {
-            if (n.next == j) {
-
+        Node<T> temp;
+        Node<T> current = head;
+        while (current.next != null && current.getData() != input) { // while current exist and its not equal to input
+            if (current.next.getData().equals(input)) { //  if value of next node is equal to input
+                temp = current.next; //set temp node to next node being pointed to
+                current.next = temp.next;
+                temp.next = null;
+            } else {
+                current = current.next;
             }
         }
     }

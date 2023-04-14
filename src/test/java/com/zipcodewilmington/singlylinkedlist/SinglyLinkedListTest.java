@@ -34,6 +34,7 @@ public class SinglyLinkedListTest{
         String expected = "test";
         // When
         list.add(expected);
+        list.add("Test2");
         list.remove(expected);
         // Then
         Assert.assertFalse(list.contains(expected));
